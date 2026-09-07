@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalle del producto - DarkWear</title>
+    <link rel="stylesheet" href="../css/style.css" />
+   
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="../assets/img/logo_gotic.jpg" alt="DarkWear Logo" class="logo" />
+            <span class="brand">DarkWear</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                
+            </ul>
+        </nav>
+        <div class="acciones-usuario">
+            <a href="login.html" class="btn-login">Iniciar sesión</a>
+
+            <div class="cart-icon" id="cartIcon">
+                <span class="cart-count" id="cartCount">0</span>
+                <span class="cart-label">Carrito</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="detalle-container" id="detalleProducto">
+            <div class="detalle-imagen">
+                <img id="detalleImg" src="../assets/img/chaqueta de cuero.jpg" alt="Chaqueta de cuero" />
+            </div>
+
+            <div class="detalle-info">
+                <a href="productos.html" class="detalle-volver">← Volver a productos</a>
+                
+                <span class="detalle-categoria" id="detalleCategoria">Camperas</span>
+                <h2 id="detalleNombre">Chaqueta de cuero</h2>
+                <p class="detalle-precio" id="detallePrecio">$45.000</p>
+                
+                <div class="detalle-descripcion" id="detalleDescripcion">
+                    <p>Descripción del producto</p>
+                </div>
+
+                <div>
+                    <p style="color: var(--text-secondary); font-weight: 500; margin-bottom: 0.5rem;">Selecciona tu talla:</p>
+                    <div class="detalle-tallas" id="detalleTallas"></div>
+                </div>
+
+                <div class="detalle-cantidad">
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" value="1" min="1" max="10" />
+                </div>
+
+                <button class="btn-agregar-detalle" id="btnAgregarDetalle">
+                    Agregar al carrito
+                </button>
+            </div>
+        </div>
+
+        <!-- Carrito dropdown -->
+        <div class="cart-dropdown" id="cartDropdown">
+            <h3>Mi Carrito</h3>
+            <div id="cartItems">
+                <p class="cart-empty">El carrito está vacío</p>
+            </div>
+            <div class="cart-total" id="cartTotal">Total: $0</div>
+            <button class="btn btn-checkout" id="checkoutBtn">Finalizar compra</button>
+            <button class="btn btn-clear" id="clearCartBtn">Vaciar carrito</button>
+        </div>
+    </main>
+
+    <footer>
+        <!-- ... (mismo footer) ... -->
+    </footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    <!-- 1. Datos de productos -->
+    <script src="../js/productos-data.js"></script>
+    
+    <!-- 2. Carrito (main.js) -->
+    <script src="../js/main.js"></script>
+    
+    <!-- 3. Lógica de la página de detalles -->
+    <script src="../js/detalle-producto.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkWear - Nosotros</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    
+    <header>
+        <div class="logo-container">
+            <img src="../assets/img/logo_gotic.jpg"
+                 alt="DarkWear Logo"
+                 class="logo">
+
+            <span class="brand">DarkWear</span>
+        </div>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="home.html">Inicio</a>
+                </li>
+
+                <li>
+                    <a href="productos.html">Productos</a>
+                </li>
+
+                <li>
+                    <a href="nosotros.html" class="active">Nosotros</a>
+                </li>
+
+                <li>
+                    <a href="contacto.html">Contacto</a>
+                </li>
+
+                <li>
+                    <a href="terminos.html">Términos</a>
+                </li>
+
+                <li>
+                    <a href="privacidad.html">Privacidad</a>
+                </li>
+
+            </ul>
+        </nav>
+
+        <div class="acciones-usuario">
+            <a href="login.html" class="btn-login">Iniciar sesión</a>
+
+            <div class="cart-icon" id="cartIcon">
+                <span class="cart-count" id="cartCount">0</span>
+                <span class="cart-label">Carrito</span>
+            </div>
+        </div>
+    </header>
+
+
+    
+    <main>
+
+        <section class="nosotros">
+
+            <h2 class="section-title">Nosotros</h2>
+
+            <div class="nosotros-container">
+
+                <!-- INFORMACIÓN -->
+                <div class="nosotros-info">
+
+                    <h3>¿Quiénes somos?</h3>
+
+                    <p>
+                        En DarkWear somos una tienda dedicada a la moda
+                        alternativa, enfocada en personas que buscan expresar
+                        su personalidad y estilo a través de la ropa.
+                    </p>
+
+                    <p>
+                        Nuestra tienda nace con la idea de ofrecer prendas
+                        diferentes, con una identidad oscura, moderna y
+                        alternativa.
+                    </p>
+
+                    <p>
+                        Buscamos entregar productos de calidad y una
+                        experiencia de compra sencilla, cómoda y segura.
+                    </p>
+
+
+                    <div class="ubicacion-info">
+
+                        <h3>📍 Nuestra ubicación</h3>
+
+                        <p>
+                            <strong>Dirección:</strong><br>
+                            Santiago, Chile
+                        </p>
+
+                        <p>
+                            <strong>Horario de atención:</strong><br>
+                            Lunes a Viernes de 09:00 a 18:00
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                
+                <div class="mapa-container">
+
+                    <iframe
+                        src="https://www.google.com/maps?q=Santiago,Chile&output=embed"
+                        loading="lazy"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
+
+            </div>
+
+        </section>
+        
+        <div class="cart-dropdown" id="cartDropdown">
+            <h3>Mi Carrito</h3>
+            <div id="cartItems">
+                <p class="cart-empty">El carrito está vacío</p>
+            </div>
+            <div class="cart-total" id="cartTotal">Total: $0</div>
+            <button class="btn btn-checkout" id="checkoutBtn">Finalizar compra</button>
+            <button class="btn btn-clear" id="clearCartBtn">Vaciar carrito</button>
+        </div>
+
+    </main>
+
+
+    
+    <footer>
+
+        <div class="footer-content">
+
+            <p>
+                &copy; 2026 DarkWear - Tienda de ropa alternativa
+            </p>
+
+            <div class="footer-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">TikTok</a>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="../js/main.js"></script>
+
+</body>
+</html>
+
