@@ -20,12 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
             var emailC = document.getElementById('emailContacto');
             var emailCError = document.getElementById('emailContactoError');
-            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            // Solo permite dominios: @duoc.cl, @profesor.duoc.cl, @gmail.com
+            var emailPattern = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
             if (!emailC.value.trim()) {
                 emailCError.textContent = 'El correo es obligatorio.';
                 valid = false;
             } else if (!emailPattern.test(emailC.value.trim())) {
-                emailCError.textContent = 'Ingresa un correo válido.';
+                emailCError.textContent = 'Ingresa un correo válido (ej: @duoc.cl, @gmail.com).';
                 valid = false;
             } else {
                 emailCError.textContent = '';
