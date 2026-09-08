@@ -1,11 +1,7 @@
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('registroForm');
     const btnRegistro = document.getElementById('btnRegistro');
 
-    // Elementos del formulario
     const nombre = document.getElementById('nombre');
     const apellido = document.getElementById('apellido');
     const email = document.getElementById('email');
@@ -14,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const passwordConfirm = document.getElementById('passwordConfirm');
     const terminos = document.getElementById('terminos');
 
-    // Elementos de error
     const nombreError = document.getElementById('nombreError');
     const apellidoError = document.getElementById('apellidoError');
     const emailError = document.getElementById('emailError');
@@ -23,9 +18,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const passwordConfirmError = document.getElementById('passwordConfirmError');
     const terminosError = document.getElementById('terminosError');
 
-    
+    // Solo permite dominios: @duoc.cl, @profesor.duoc.cl, @gmail.com
+    const emailPattern = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
 
-    // Validar nombre
     nombre.addEventListener('input', function () {
         if (this.value.trim().length < 2) {
             this.classList.add('error');
@@ -36,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Validar apellido
     apellido.addEventListener('input', function () {
         if (this.value.trim().length < 2) {
             this.classList.add('error');
@@ -47,19 +41,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Validar email
     email.addEventListener('input', function () {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(this.value.trim())) {
+        if (!emailPattern.test(this.value.trim())) {
             this.classList.add('error');
-            emailError.textContent = 'Ingresa un correo electrónico válido';
+            emailError.textContent = 'Ingresa un correo válido (ej: @duoc.cl, @gmail.com)';
         } else {
             this.classList.remove('error');
             emailError.textContent = '';
         }
     });
 
-    // Validar teléfono (opcional)
     telefono.addEventListener('input', function () {
         if (this.value.trim() && !/^[\+\d\s\-]{8,15}$/.test(this.value.trim())) {
             this.classList.add('error');
@@ -69,8 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
             telefonoError.textContent = '';
         }
     });
-
-   //contraseña
 
     const strengthBars = [
         document.getElementById('strengthBar1'),
@@ -84,13 +73,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const value = this.value;
         let strength = 0;
 
-        // validamos la psw
         if (value.length >= 8) strength++;
         if (/[a-z]/.test(value) && /[A-Z]/.test(value)) strength++;
         if (/\d/.test(value)) strength++;
         if (/[^a-zA-Z0-9]/.test(value)) strength++;
 
-        // Actualizar barras
         strengthBars.forEach(function (bar, index) {
             bar.className = 'bar';
             if (index < strength) {
@@ -105,12 +92,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Actualizar texto
         const texts = ['Muy débil', 'Débil', 'Media', 'Fuerte', 'Muy fuerte'];
         passwordText.textContent = value.length > 0 ? texts[strength] : 'Mínimo 8 caracteres';
         passwordText.style.color = strength <= 2 ? '#cc3333' : strength === 3 ? '#ffaa00' : '#33cc33';
 
-        // Validar contraseña
         if (value.length > 0 && value.length < 8) {
             this.classList.add('error');
             passwordError.textContent = 'La contraseña debe tener al menos 8 caracteres';
@@ -119,13 +104,10 @@ document.addEventListener('DOMContentLoaded', function () {
             passwordError.textContent = '';
         }
 
-        // Validar confirmación si ya tiene texto
         if (passwordConfirm.value.length > 0) {
             validarConfirmacion();
         }
     });
-
-    // repita la psw
 
     function validarConfirmacion() {
         if (password.value !== passwordConfirm.value) {
@@ -141,49 +123,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
     passwordConfirm.addEventListener('input', validarConfirmacion);
 
-    
-
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        // Validar todos los campos
         let isValid = true;
 
-        // Nombre
         if (nombre.value.trim().length < 2) {
             nombre.classList.add('error');
             nombreError.textContent = 'El nombre debe tener al menos 2 caracteres';
             isValid = false;
         }
 
-        // Apellido
         if (apellido.value.trim().length < 2) {
             apellido.classList.add('error');
             apellidoError.textContent = 'El apellido debe tener al menos 2 caracteres';
             isValid = false;
         }
 
-        // Email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email.value.trim())) {
+        if (!emailPattern.test(email.value.trim())) {
             email.classList.add('error');
-            emailError.textContent = 'Ingresa un correo electrónico válido';
+            emailError.textContent = 'Ingresa un correo válido (ej: @duoc.cl, @gmail.com)';
             isValid = false;
         }
 
-        // Contraseña
         if (password.value.length < 8) {
             password.classList.add('error');
             passwordError.textContent = 'La contraseña debe tener al menos 8 caracteres';
             isValid = false;
         }
 
-        // Confirmar contraseña
         if (!validarConfirmacion()) {
             isValid = false;
         }
 
-        // Términos
         if (!terminos.checked) {
             terminosError.textContent = 'Debes aceptar los términos y condiciones';
             isValid = false;
@@ -196,14 +168,10 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        
-
         btnRegistro.disabled = true;
         btnRegistro.textContent = 'Creando cuenta...';
 
-        // Simular petición al servidor
         setTimeout(function () {
-            // Guardar usuario en localStorage (simulación)
             const usuario = {
                 nombre: nombre.value.trim(),
                 apellido: apellido.value.trim(),
@@ -214,22 +182,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
             localStorage.setItem('usuarioDarkWear', JSON.stringify(usuario));
 
-            // Mostrar mensaje de éxito
             showToast('success', '¡Cuenta creada!',
                 'Bienvenido ' + usuario.nombre + '. Ya puedes iniciar sesión.');
 
             btnRegistro.disabled = false;
             btnRegistro.textContent = 'Crear cuenta';
 
-            // Redirigir después de 2 segundos
             setTimeout(function () {
                 window.location.href = 'login.html';
             }, 2500);
 
         }, 1500);
     });
-
-    // ========== TOAST NOTIFICATION ==========
 
     function showToast(type, title, message) {
         const toast = document.getElementById('toast');
@@ -240,7 +204,6 @@ document.addEventListener('DOMContentLoaded', function () {
         toastTitle.textContent = title;
         toastMessage.textContent = message;
 
-        // Ocultar después de 3 segundos
         clearTimeout(toast._timeout);
         toast._timeout = setTimeout(function () {
             toast.classList.remove('show');
